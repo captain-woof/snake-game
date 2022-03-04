@@ -5,8 +5,7 @@
     height: 100vh;
     z-index: 2;
     transition: opacity 1.25s linear;
-    background-color: rgb(224 224 224 / 39%);
-    backdrop-filter: blur(8.5px);
+    background-color: #ffffff;
 
     &.menu-close {
         opacity: 0;
