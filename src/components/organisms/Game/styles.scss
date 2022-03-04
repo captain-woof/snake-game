@@ -32,6 +32,15 @@
         #game-container__bottom-section {
             height: 25%;
             padding: 0.5rem;
+            position: relative;
+
+            #game-container__bottom-section__score {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                margin: 0;
+                font-size: 1.25em;
+            }
         }
     }
 }

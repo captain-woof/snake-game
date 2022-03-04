@@ -5,6 +5,7 @@ import "./styles.scss";
 export default function Game() {
 
     const [buttonPressed, setButtonPressed] = useState(null); // Tracks the button pressed on controller - 'left', 'right', 'up', 'down'
+    const [score, setScore] = useState(0); // Number of pellets eaten
 
     return (
         <section id="game-container">
@@ -22,8 +23,9 @@ export default function Game() {
 
                 </div>
 
-                {/* Bottom section - Controller */}
+                {/* Bottom section - Controller and score*/}
                 <div id="game-container__bottom-section">
+                    <h2 id="game-container__bottom-section__score">Score: {score}</h2>
                     <Controller setButtonPressed={setButtonPressed} />
                 </div>
             </div>
