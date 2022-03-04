@@ -5,8 +5,8 @@
     height: 100vh;
     z-index: 2;
     transition: opacity 1.25s linear;
-    background-color: rgb(167 68 68 / 39%);
-    backdrop-filter: blur(2.5px);
+    background-color: rgb(224 224 224 / 39%);
+    backdrop-filter: blur(8.5px);
 
     &.menu-close {
         opacity: 0;
@@ -37,11 +37,13 @@
         #menu-container__inner-container__credit {
             position: absolute;
             bottom: 2.5%;
-            text-align: center;
-            width: 100%;
-            color: #ffffff;
+            left: 50%;
+            transform: translateX(-50%);
+            width: fit-content;
+            background-color: #dddddd;
             font-weight: 600;
-            padding: 0 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 50rem;
 
             a {
                 text-decoration: underline;
