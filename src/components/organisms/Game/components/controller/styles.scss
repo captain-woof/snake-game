@@ -1,0 +1,47 @@
+#controller {
+    margin-left: auto;
+    height: 100%;
+    width: calc((((100vh - 2rem) / 4) - 1rem));
+    position: relative;
+
+    .controller-button {
+        --dimension: 2rem;
+
+        position: absolute;
+        width: var(--dimension);
+        height: var(--dimension);
+
+        &#controller-up-button {
+            top: 0;
+            transform: translateX(-50%) rotate(-90deg);
+            left: 50%;
+        }
+
+        &#controller-down-button {
+            bottom: 0;
+            transform: translateX(-50%) rotate(90deg);
+            left: 50%;
+        }
+
+        &#controller-left-button {
+            left: 0;
+            transform: translateY(-50%) rotate(180deg);
+            top: 50%;
+        }
+
+        &#controller-right-button {
+            right: 0;
+            transform: translateY(-50%);
+            top: 50%;
+        }
+
+        svg {
+            width: var(--dimension);
+            height: var(--dimension);
+        }
+
+        &:active svg {
+            fill: #7ea449;
+        }
+    }
+}
