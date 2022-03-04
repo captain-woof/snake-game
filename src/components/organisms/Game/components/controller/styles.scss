@@ -40,6 +40,10 @@
             height: var(--dimension);
         }
 
+        &:hover svg {
+            fill: #97c05d;
+        }
+
         &:active svg {
             fill: #7ea449;
         }
