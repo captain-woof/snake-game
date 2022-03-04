@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Controller from "./components/controller";
+import GameGrid from "./components/gameGrid";
 import "./styles.scss";
 
 export default function Game() {
@@ -20,7 +21,7 @@ export default function Game() {
 
                 {/* Game section - Snake grid */}
                 <div id="game-container__game-section">
-
+                    <GameGrid buttonPressed={buttonPressed} setScore={setScore} />
                 </div>
 
                 {/* Bottom section - Controller and score*/}
