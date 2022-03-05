@@ -23,5 +23,5 @@ export const useAnimationFrame = (callback, ticksPerSecond = 1, stop = false, de
 
         // Cancels render loop
         return () => cancelAnimationFrame(handle);
-    }, deps)
+    }, [...deps, stop])
 }

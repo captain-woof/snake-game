@@ -1,12 +1,9 @@
-import { useState } from "react";
 import "./styles.scss";
 import SnakeGameLogo from "../../../images/snake-game-logo.png";
 import Button from "../../atoms/Button";
 import cx from "classnames";
 
-export default function MainMenu() {
-    const [close, setClose] = useState(false); // Tracks if menu is shown or hidden (when game starts)
-
+export default function MainMenu({ close, setClose }) {
     return (
         <section id="menu-container" className={cx(close && "menu-close")}>
             <div id="menu-container__inner-container">

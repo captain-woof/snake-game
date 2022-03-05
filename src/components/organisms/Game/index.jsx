@@ -3,7 +3,7 @@ import Controller from "./components/controller";
 import GameGrid from "./components/gameGrid";
 import "./styles.scss";
 
-export default function Game() {
+export default function Game({ mainMenuClose }) {
 
     const [buttonPressed, setButtonPressed] = useState('right'); // Tracks the button pressed on controller - 'left', 'right', 'up', 'down'
     const [score, setScore] = useState(0); // Number of pellets eaten
@@ -21,7 +21,7 @@ export default function Game() {
 
                 {/* Game section - Snake grid */}
                 <div id="game-container__game-section">
-                    <GameGrid buttonPressed={buttonPressed} setScore={setScore} />
+                    <GameGrid buttonPressed={buttonPressed} setScore={setScore} mainMenuClose={mainMenuClose} />
                 </div>
 
                 {/* Bottom section - Controller and score*/}
