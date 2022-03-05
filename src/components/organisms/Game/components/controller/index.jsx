@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import ArrowIcon from "../../../../atoms/Arrow";
 import "./styles.scss";
 import controllerKeyMap from "../../../../../keyMaps/controller.json";
+import KeyboardIcon from "../../../../../images/keyboard-icon.svg";
 
 function Controller({ setButtonPressed }) {
 
@@ -28,6 +29,7 @@ function Controller({ setButtonPressed }) {
                     <ArrowIcon />
                 </button>
             ))}
+            <img src={KeyboardIcon} alt="keyboard-icon" id="controller__keyboard-logo" />
         </div>
     )
 }
