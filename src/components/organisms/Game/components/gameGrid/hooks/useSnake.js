@@ -29,6 +29,17 @@ const snakeSegmentsArrInitialGenerator = (rows, columns) => {
     ])
 }
 
+// Function to increment/decrement position
+const getUpdatedPosition = (curr, max, action = "inc") => {
+    let newCurr = null;
+    if(action === 'inc'){ // Increment
+        newCurr = (curr + 1) % max;
+    } else { // Decrement
+        newCurr = (curr - 1 === -1) ? max - 1 : curr - 1;
+    }
+    return newCurr;
+}
+
 
 export const useSnake = (started, buttonPressed, gridSize) => {
     const { ref: gameGridContainerRef, rows, columns } = useRowsColumns(gridSize); // Returns the number of rows and columns to render
@@ -87,16 +98,16 @@ export const useSnake = (started, buttonPressed, gridSize) => {
                 const newSnakeHeadCurr = [...prevSnakeSegmentsArr[0].curr];
                 switch (newSnakeDirection) {
                     case "up":
-                        newSnakeHeadCurr[0] -= 1;
+                        newSnakeHeadCurr[0] = getUpdatedPosition(newSnakeHeadCurr[0], rows, "dec");
                         break;
                     case "down":
-                        newSnakeHeadCurr[0] += 1;
+                        newSnakeHeadCurr[0] = getUpdatedPosition(newSnakeHeadCurr[0], rows, "inc");
                         break;
                     case "left":
-                        newSnakeHeadCurr[1] -= 1;
+                        newSnakeHeadCurr[1] = getUpdatedPosition(newSnakeHeadCurr[1], columns, "dec");
                         break;
                     case "right":
-                        newSnakeHeadCurr[1] += 1;
+                        newSnakeHeadCurr[1] = getUpdatedPosition(newSnakeHeadCurr[1], columns, "inc");
                         break;
                 }
 
@@ -119,7 +130,7 @@ export const useSnake = (started, buttonPressed, gridSize) => {
             }
         })
 
-    }, 1, false, [buttonPressed])
+    }, 2, false, [buttonPressed, rows, columns])
 
     // Return stuff
     return {
