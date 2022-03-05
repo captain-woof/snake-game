@@ -5,7 +5,7 @@ import "./styles.scss";
 
 export default function Game() {
 
-    const [buttonPressed, setButtonPressed] = useState(null); // Tracks the button pressed on controller - 'left', 'right', 'up', 'down'
+    const [buttonPressed, setButtonPressed] = useState('right'); // Tracks the button pressed on controller - 'left', 'right', 'up', 'down'
     const [score, setScore] = useState(0); // Number of pellets eaten
 
     return (

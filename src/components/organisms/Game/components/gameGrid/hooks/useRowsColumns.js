@@ -9,7 +9,7 @@ export const useRowsColumns = (gridSize) => {
     useEffect(() => {
         // Function to set rows and columns
         function setRowsColumns() {
-            if (!!ref.current) {
+            if (!!ref?.current) {
                 setRows(Math.floor(ref.current.clientHeight / gridSize));
                 setColumns(Math.floor(ref.current.clientWidth / gridSize));
             }

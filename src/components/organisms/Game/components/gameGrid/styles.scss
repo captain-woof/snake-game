@@ -18,6 +18,10 @@
                 border: 1px solid #929292;
                 height: calc(var(--grid-size) * 1px);
                 width: calc(var(--grid-size) * 1px);
+
+                &.snake-body-segment {
+                    background-color: #a0c522;
+                }
             }
         }
     }
