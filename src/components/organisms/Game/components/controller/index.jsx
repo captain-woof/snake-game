@@ -15,7 +15,7 @@ function Controller({ setButtonPressed }) {
     useEffect(() => {
         function handleKeyPress(e) {
             const buttonPressed = controllerKeyMap[e.key];
-            buttonRefs[buttonPressed].current.click();
+            buttonRefs[buttonPressed]?.current.click();
         }
         document.addEventListener("keydown", handleKeyPress);
         return () => document.removeEventListener("keydown", handleKeyPress);
