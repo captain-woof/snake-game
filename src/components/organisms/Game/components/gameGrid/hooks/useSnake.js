@@ -2,6 +2,8 @@ import { useEffect, useState } from "react"
 import { useAnimationFrame } from "./useAnimationFrame";
 import { useRowsColumns } from "./useRowsColumns";
 import directionButtonMapping from "../../../../../../keyMaps/directionButton.json";
+import Swal from "sweetalert2";
+import 'sweetalert2/src/sweetalert2.scss';
 
 // Function to generate initial snake body segments array, length 4
 const snakeSegmentsArrInitialGenerator = (rows, columns) => {
@@ -80,7 +82,6 @@ export const useSnake = (mainMenuClose, buttonPressed, gridSize, setScore) => {
         if (mainMenuClose) {
             setTimeout(() => {
                 setStarted(true);
-                console.log("GAME STARTED!");
             }, 2 * 1000);
         }
     }, [mainMenuClose])
@@ -212,7 +213,45 @@ export const useSnake = (mainMenuClose, buttonPressed, gridSize, setScore) => {
         }
     }, [snakeSegmentsArr, foodPosition])
 
-    // Check for collision with itself.
+    // Check for collision with itself. If yes, set game status to "lose"
+    useEffect(() => {
+        if (snakeSegmentsArr.length > 4) { // It's impossible for a snake to collide with itself if it has length of 4 or lower
+            const snakeHeadCurr = snakeSegmentsArr[0].curr;
+            for (let i = 4; i < snakeSegmentsArr.length; i++) {
+                const snakeSegmentToCheck = snakeSegmentsArr[i].curr;
+                if (snakeHeadCurr[0] === snakeSegmentToCheck[0] && snakeHeadCurr[1] === snakeSegmentToCheck[1]) {
+                    setGameStatus("lose");
+                    setStarted(false);
+                    break;
+                }
+            }
+        }
+    }, [snakeSegmentsArr])
+
+    // Check if all grids are covered. IF yes, set game status to "win"
+    useEffect(() => {
+        if (snakeSegmentsArr.length !== 0 && rows !== 0 && columns !== 0 && snakeSegmentsArr.length === (rows * columns)) {
+            setGameStatus("win");
+            setStarted(false);
+        }
+    }, [snakeSegmentsArr, rows, columns])
+
+    // Fire appropriate modal on game status change
+    useEffect(() => {
+        if (gameStatus === "lose") {
+            Swal.fire({
+                title: "Oops!",
+                text: "Looks like you ate yourself! Better luck next time!",
+                footer: `Created by&nbsp;<b><a href="https://twitter.com/realCaptainWoof">Sohail Saha (@realCaptainWoof)</a></b>`
+            })
+        } else if (gameStatus === "win") {
+            Swal.fire({
+                title: "Yayyyy!",
+                text: "You did it! You cleared the entire board! Well done!",
+                footer: `Created by&nbsp;<b><a href="https://twitter.com/realCaptainWoof">Sohail Saha (@realCaptainWoof)</a></b>`
+            })
+        }
+    }, [gameStatus])
 
     // Return stuff
     return {
